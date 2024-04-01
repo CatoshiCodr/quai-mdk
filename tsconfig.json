@@ -1,3 +1,27 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es6"],
+    "allowJs": false,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "src": ["./src"],
+      "library": ["./library"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.setup.js",
+    "jest.config.js",
+    "react-native.config.js",
+    ".eslintrc.js"
+  ]
 }
