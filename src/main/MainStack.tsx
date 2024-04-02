@@ -8,7 +8,7 @@ import {
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import WalletIcon from 'src/shared/assets/regions/account-box-outline.svg';
+import WalletIcon from 'src/shared/assets/account-box-outline.svg';
 import SettingsIcon from 'src/shared/assets/icon-settings.svg';
 import SendReceiveIcon from 'src/shared/assets/icon-send-receive.svg';
 import { QuaiPayContent } from 'src/shared/components';

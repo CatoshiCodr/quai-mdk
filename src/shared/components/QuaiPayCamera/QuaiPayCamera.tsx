@@ -1,57 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
-import { RNHoleView } from 'react-native-hole-view';
-import { Camera, Frame, useCameraDevices } from 'react-native-vision-camera';
-import { useIsFocused } from '@react-navigation/native';
+import React, {  } from 'react';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { styledColors } from '../../styles';
 
 const windowWidth = Dimensions.get('window').width;
 export const squareHoleSize = windowWidth * 0.65;
 const squarePaddingRight = (windowWidth - squareHoleSize) / 2;
 
-interface QuaiPayCameraProps {
-  frameProcessor: (frame: Frame) => void;
-}
-
-export const QuaiPayCamera: React.FC<QuaiPayCameraProps> = ({
-  frameProcessor,
-}) => {
-  const [hasPermission, setHasPermission] = useState(false);
-  const [isCameraReady, setIsCameraReady] = useState(true);
-  const isFocused = useIsFocused();
-
-  const devices = useCameraDevices();
-  const device = devices.back;
-
-  useEffect(() => {
-    if (isFocused) {
-      setIsCameraReady(true);
-    } else {
-      setIsCameraReady(false);
-    }
-  }, [isFocused]);
-
-  useEffect(() => {
-    (async () => {
-      const status = await Camera.requestCameraPermission();
-      setHasPermission(status === 'authorized');
-    })();
-  }, []);
+export const QuaiPayCamera: React.FC = () => {
 
   return (
     <View style={styles.cameraContainer}>
-      {device != null && hasPermission && isCameraReady && (
-        <>
-          <Camera
-            style={StyleSheet.absoluteFill}
-            device={device}
-            isActive={true}
-            frameProcessor={frameProcessor}
-            frameProcessorFps={5}
-          />
-          <RNHoleView style={styles.holeView} holes={[styles.squareItem]} />
-        </>
-      )}
+      <Text>Work In Progress</Text>
     </View>
   );
 };
@@ -71,12 +30,5 @@ const styles = StyleSheet.create({
     height: '100%',
     opacity: 0.6,
     backgroundColor: styledColors.black,
-  },
-  squareItem: {
-    x: squarePaddingRight,
-    y: 120,
-    width: squareHoleSize,
-    height: squareHoleSize,
-    borderRadius: 10,
-  },
+  }
 });
