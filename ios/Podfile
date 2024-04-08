@@ -27,7 +27,16 @@ end
 
 target 'Quai' do
   config = use_native_modules!
-
+  
+  pre_install do |installer|
+    installer.pod_targets.each do |pod|
+      if pod.name.eql?('vision-camera-code-scanner') || pod.name.eql?('VisionCamera')
+        def pod.build_type
+          Pod::BuildType.static_library
+        end
+      end
+    end
+  end
   use_react_native!(
     :path => config[:reactNativePath],
     # Enables Flipper.
